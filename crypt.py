@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 import random
 import datetime
-import Tkinter as tk
+import tkinter as tk
 
 class SimpleDES:
 	def __init__(self,key):
@@ -189,8 +189,6 @@ class CFB:
 		des = SimpleDES(key)
 		for i in range(0,len(crypt)):
 			if i==0:
-				print self.iv
-				print ord(crypt[i])
 				plain += chr(ord(crypt[i])^(int(des.crypt("{0:b}".format(self.iv).zfill(8)),2)))
 			else:
 				plain += chr(ord(crypt[i])^int(des.crypt("{0:b}".format(ord(crypt[i-1])).zfill(8)),2))
@@ -351,17 +349,14 @@ class Gui:
 			
 				if(self.cbc.get()):
 					c_cbc = CBC(int(self.iv.get(),2))
-					print c_cbc.crypt(self.plain.get(),self.key.get())
 					self.cipher.delete(0,tk.END)
 					self.cipher.insert(0,c_cbc.crypt(self.plain.get(),self.key.get()))
 				elif(self.cfb.get()):
 					c_cfc = CFB(int(self.iv.get(),2))
-					print c_cfc.crypt(self.plain.get(),self.key.get())
 					self.cipher.delete(0,tk.END)
 					self.cipher.insert(0,c_cfc.crypt(self.plain.get(),self.key.get()))
 				elif(self.ofb.get()):
 					c_ofb = OFB(int(self.iv.get(),2))
-					print c_ofb.crypt(self.plain.get(),self.key.get())
 					self.cipher.delete(0,tk.END)
 					self.cipher.insert(0,c_ofb.crypt(self.plain.get(),self.key.get()))
 				elif(self.ctr.get()):
@@ -371,7 +366,6 @@ class Gui:
 					self.iv.delete(0,tk.END)
 					self.iv.insert(0,iv_)
 					c_ctr = CTR(int(self.iv.get()[0:4],2))
-					print c_ctr.crypt(self.plain.get(),self.key.get())
 					self.cipher.delete(0,tk.END)
 					self.cipher.insert(0,c_ctr.crypt(self.plain.get(),self.key.get()))
 				self.bit_print(0)
@@ -415,17 +409,14 @@ class Gui:
 			
 				if(self.cbc.get()):
 					c_cbc = CBC(int(self.iv.get(),2))
-					print c_cbc.decrypt(self.cipher.get(),self.key.get())
 					self.plain.delete(0,tk.END)
 					self.plain.insert(0,c_cbc.decrypt(self.cipher.get(),self.key.get()))
 				elif(self.cfb.get()):
 					c_cfc = CFB(int(self.iv.get(),2))
-					print c_cfc.decrypt(self.cipher.get(),self.key.get())
 					self.plain.delete(0,tk.END)
 					self.plain.insert(0,c_cfc.decrypt(self.cipher.get(),self.key.get()))
 				elif(self.ofb.get()):
 					c_ofb = OFB(int(self.iv.get(),2))
-					print c_ofb.crypt(self.cipher.get(),self.key.get())
 					self.plain.delete(0,tk.END)
 					self.plain.insert(0,c_ofb.crypt(self.cipher.get(),self.key.get()))
 				elif(self.ctr.get()):
@@ -435,7 +426,6 @@ class Gui:
 					self.iv.delete(0,tk.END)
 					self.iv.insert(0,iv_)
 					c_ctr = CTR(int(self.iv.get()[0:4],2))
-					print c_ctr.crypt(self.cipher.get(),self.key.get())
 					self.plain.delete(0,tk.END)
 					self.plain.insert(0,c_ctr.crypt(self.cipher.get(),self.key.get()))
 				self.bit_print(1)
@@ -543,10 +533,10 @@ class HACK:
 		key = -1
 		plain = ""
 
-		print "영어사전을 오픈합니다....\n"
+		print("영어사전을 오픈합니다....\n")
 		eng = self.open_engDictionary()
 
-		print "hack을 시작합니다.\n"
+		print("hack을 시작합니다.\n")
 		start = datetime.datetime.now()
 		#key의 범위는 2^10 0~1024 대입
 		
