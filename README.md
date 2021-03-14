@@ -12,6 +12,12 @@
 - window 10
 - python3.9
 
+## 실행
+
+```sh
+python3 crypt.py
+```
+
 ## 실행 이미지()
 ![image](https://user-images.githubusercontent.com/28975774/111064250-4a66bb80-84f6-11eb-9601-e30c034f8aaf.png)
 
