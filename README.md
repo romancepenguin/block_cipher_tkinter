@@ -1,6 +1,5 @@
 # block_cipher_tkinter
 
-대학 과제
 문자열 암호화/복호화 GUI 프로그램
 
 
